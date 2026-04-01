@@ -2,7 +2,7 @@
 
 namespace DataDemo
 {
-    // Change made on dev
+    // Version with database
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
