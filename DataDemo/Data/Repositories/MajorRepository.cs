@@ -2,71 +2,71 @@
 using Microsoft.Data.Sqlite;
 namespace DataDemo.Data.Repositories;
 
-public class CourseRepository
+public class MajorRepository
 {
     private readonly DatabaseService db;
 
-    public CourseRepository(DatabaseService db)
+    public MajorRepository(DatabaseService db)
     {
         this.db = db;
     }
 
-    public List<Course> GetAll()
+    public List<Major> GetAll()
     {
-        List<Course> items = new List<Course>();
+        List<Major> items = new List<Major>();
         using var conn = new SqliteConnection(db.ConnectionString);
         conn.Open();
-        string sql = "SELECT Id, Name FROM Course ORDER BY Name;";
+        string sql = "SELECT Id, Title FROM Major ORDER BY Title;";
         using var cmd = new SqliteCommand(sql, conn);
         using var reader = cmd.ExecuteReader(); 
         while (reader.Read())
         {
-            Course course = new Course
+            Major Major = new Major
             {
                 Id = reader.GetInt32(0),
-                Name = reader.GetString(1)
+                Title = reader.GetString(1)
             }; 
-            items.Add(course);
+            items.Add(Major);
         }
         return items;
     }
 
-    public Course? GetById(int id)
+    public Major? GetById(int id)
     {
         using var conn = new SqliteConnection(db.ConnectionString);
         conn.Open();
-        string sql = "SELECT Id, Name FROM Course WHERE Id = $id;";
+        string sql = "SELECT Id, Title FROM Major WHERE Id = $id;";
         using var cmd = new SqliteCommand(sql, conn);
         cmd.Parameters.AddWithValue("$id", id);
         using var reader = cmd.ExecuteReader();
         if (reader.Read())
         {
-            return new Course
+            return new Major
             {
                 Id = reader.GetInt32(0),
-                Name = reader.GetString(1)
+                Title = reader.GetString(1)
             };
         }
         return null;
     }
 
-    public void Add(Course course)
+    public void Add(Major Major)
     {
         using var conn = new SqliteConnection(db.ConnectionString);
         conn.Open();
-        string sql = "INSERT INTO Course (Name) VALUES ($name);";
+        string sql = "INSERT INTO Major (Title) VALUES ($title);";
         using var cmd = new SqliteCommand(sql, conn);
-        cmd.Parameters.AddWithValue("$name", course.Name);
+        cmd.Parameters.AddWithValue("$title", Major.Title);
         cmd.ExecuteNonQuery();
     }
-    public void Update(Course course)
+    public void Update(Major Major)
     {
         using var conn = new SqliteConnection(db.ConnectionString);
         conn.Open(); 
-        string sql = "UPDATE Course SET Name = $name WHERE Id = $id;";
+        string sql = "UPDATE Major SET Title = $title WHERE Id = $id;";
         using var cmd = new SqliteCommand(sql, conn);
-        cmd.Parameters.AddWithValue("$name", course.Name);
-        cmd.Parameters.AddWithValue("$id", course.Id);
+        cmd.Parameters.AddWithValue("$title", Major.Title);
+        cmd.Parameters.AddWithValue("$id", Major.Id);
         cmd.ExecuteNonQuery();
     }
 
@@ -74,7 +74,7 @@ public class CourseRepository
     {
         using var conn = new SqliteConnection(db.ConnectionString);
         conn.Open();
-        string sql = "DELETE FROM Course WHERE Id = $id;";
+        string sql = "DELETE FROM Major WHERE Id = $id;";
         using var cmd = new SqliteCommand(sql, conn);
         cmd.Parameters.AddWithValue("$id", id);
         cmd.ExecuteNonQuery();
