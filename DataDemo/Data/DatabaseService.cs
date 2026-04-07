@@ -1,4 +1,4 @@
-﻿namespace DataDemo
+﻿namespace DataDemo.Data
 {
     using Microsoft.Data.Sqlite;
     public class DatabaseService
