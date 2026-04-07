@@ -10,7 +10,7 @@
             FontSize="28"
             FontAttributes="Bold" />
             <Label
-            Text="Use the Campuses tab to manage campus records."
+            Text="Use the tabs to manage campus, course and majors records."
             FontSize="18" />
         </VerticalStackLayout>
     </ScrollView>
