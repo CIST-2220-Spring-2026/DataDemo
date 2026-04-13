@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataDemo.Pages.StudentPage"
+             Title="StudentPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Student Information"
+                   FontSize="24"
+                   FontAttributes="Bold" />
+
+            <Entry Placeholder="First Name"
+                   Text="{Binding FirstName}" />
+
+            <Entry Placeholder="Last Name"
+                   Text="{Binding LastName}" />
+
+            <Entry Placeholder="Student Number"
+                   Text="{Binding StudentNumber}" />
+
+            <Picker x:Name="MajorPicker"
+                    Title="Select Major"
+                    ItemDisplayBinding="{Binding Title}" />
+
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="10"
+                  Margin="0,20,0,0">
+
+                <Button x:Name="SaveButton"
+                        Text="Save"
+                        Grid.Column="0" 
+                        Clicked="SaveButton_Clicked"/>
+
+                <Button x:Name="CancelButton"
+                        Text="Cancel"
+                        Grid.Column="1" 
+                        Clicked="CancelButton_Clicked"/>
+
+            </Grid>
+
+        </VerticalStackLayout>
+     </ScrollView>
+</ContentPage>
