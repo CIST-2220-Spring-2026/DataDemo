@@ -19,12 +19,22 @@
                 CREATE TABLE IF NOT EXISTS Campus (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Name TEXT
-                );CREATE TABLE IF NOT EXISTS Course (
+                );
+                CREATE TABLE IF NOT EXISTS Course (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Name TEXT NOT NULL
-                );CREATE TABLE IF NOT EXISTS Major (
+                );
+                CREATE TABLE IF NOT EXISTS Major (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Title TEXT
+                );
+                CREATE TABLE IF NOT EXISTS Student (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    FirstName TEXT NULL,
+                    LastName TEXT NULL,
+                    StudentNumber TEXT NULL,
+                    MajorId INTEGER NULL,
+                    FOREIGN KEY (MajorId) REFERENCES Major(Id) ON DELETE SET NULL
                 );"; 
             using var cmd = new SqliteCommand(sql, conn);
             cmd.ExecuteNonQuery();
