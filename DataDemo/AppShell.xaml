@@ -20,5 +20,8 @@
         <ShellContent
         Title="Majors"
         ContentTemplate="{DataTemplate pages:MajorsPage}" />
+        <ShellContent
+        Title="Students"
+        ContentTemplate="{DataTemplate pages:StudentsPage}" />
     </TabBar>
 </Shell>

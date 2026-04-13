@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataDemo.Pages.StudentsPage"
+             Title="StudentsPage">
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <!-- Header -->
+        <Label
+            Text="Students"
+            FontSize="24"
+            FontAttributes="Bold" />
+
+        <!-- Add Button -->
+        <Button
+            x:Name="AddButton"
+            Text="Add Student" />
+
+        <!-- Student List -->
+        <CollectionView
+            x:Name="StudentsCollectionView"
+            SelectionMode="Single">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame
+                        BorderColor="LightGray"
+                        CornerRadius="10"
+                        Padding="10"
+                        Margin="0,5">
+
+                        <Grid ColumnDefinitions="*,Auto,Auto"
+                              ColumnSpacing="10"
+                              VerticalOptions="Center">
+
+                            <!-- Student Info (all horizontal) -->
+                            <HorizontalStackLayout
+                                Grid.Column="0"
+                                Spacing="10"
+                                VerticalOptions="Center">
+
+                                <Label
+                                    Text="{Binding FirstName}"
+                                    FontAttributes="Bold" />
+
+                                <Label
+                                    Text="{Binding LastName}"
+                                    FontAttributes="Bold" />
+
+                                <Label
+                                    Text="{Binding StudentNumber}"
+                                    FontSize="12"
+                                    TextColor="Gray" />
+
+                            </HorizontalStackLayout>
+
+                            <!-- Edit Button -->
+                            <Button
+                                x:Name="EditButton"
+                                Grid.Column="1"
+                                Text="Edit"
+                                FontSize="12"
+                                HeightRequest="30"
+                                Clicked="EditButton_Clicked" />
+
+                            <!-- Delete Button -->
+                            <Button
+                                x:Name="DeleteButton"
+                                Grid.Column="2"
+                                Text="Delete"
+                                FontSize="12"
+                                HeightRequest="30"
+                                Clicked="DeleteButton_Clicked" />
+
+                        </Grid>
+
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

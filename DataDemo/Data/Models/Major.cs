@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DataDemo.Data.Models
+﻿namespace DataDemo.Data.Models
 {
     public class Major
     {
